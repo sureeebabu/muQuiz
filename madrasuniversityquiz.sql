@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2018 at 05:16 PM
+-- Generation Time: Dec 04, 2018 at 05:52 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -142,11 +142,7 @@ CREATE TABLE `assignment` (
 --
 
 INSERT INTO `assignment` (`assignmentID`, `dateOfAssignment`, `targetDate`, `graceDate`, `course_code`, `subjectID`, `batchID`) VALUES
-(13, '2018-11-09 21:28:28', '2018-11-17', '2018-11-24', 'PIT', 34, 2),
-(14, '2018-11-09 21:29:01', '2018-11-17', '2018-11-24', 'PIT', 35, 2),
-(15, '2018-11-09 21:29:41', '2018-11-17', '2018-11-24', 'PIT', 38, 2),
-(16, '2018-11-09 22:12:08', '2018-11-17', '2018-11-24', 'PIT', 44, 2),
-(17, '2018-11-09 22:12:40', '2018-11-17', '2018-11-24', 'PIT', 39, 2);
+(21, '2018-12-04 21:11:51', '2018-12-11', '2018-12-15', 'PIT', 39, 2);
 
 -- --------------------------------------------------------
 
@@ -344,14 +340,26 @@ CREATE TABLE `student_assignment` (
   `batchID` int(11) DEFAULT NULL,
   `course_code` varchar(20) DEFAULT NULL,
   `subjectID` int(11) DEFAULT NULL,
-  `questionID` int(11) DEFAULT NULL,
-  `noOfQuesAttended` int(11) NOT NULL,
-  `noOfPages` int(11) NOT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `filename` varchar(250) DEFAULT NULL,
   `assignViewDate` datetime NOT NULL,
   `assignSubmitDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_assignment`
+--
+
+INSERT INTO `student_assignment` (`ID`, `assignmentID`, `enroll_no`, `batchID`, `course_code`, `subjectID`, `status`, `assignViewDate`, `assignSubmitDate`) VALUES
+(11, 21, 'C17101PIT6089', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 21, 'C17101PIT6095', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 21, 'C17101PIT6090', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 21, 'C17101PIT6091', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 21, 'C17101PIT6104', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 21, 'C17101PIT6105', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 21, 'C17101PIT6106', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 21, 'C17101PIT6108', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -536,6 +544,12 @@ ALTER TABLE `question`
   ADD PRIMARY KEY (`questionID`);
 
 --
+-- Indexes for table `student_assignment`
+--
+ALTER TABLE `student_assignment`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
@@ -573,7 +587,7 @@ ALTER TABLE `answermaster`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `assignmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `batchmaster`
@@ -604,6 +618,12 @@ ALTER TABLE `marks_details`
 --
 ALTER TABLE `question`
   MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `student_assignment`
+--
+ALTER TABLE `student_assignment`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `subjects`
