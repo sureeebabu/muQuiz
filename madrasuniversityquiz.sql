@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2018 at 05:52 PM
+-- Generation Time: Dec 06, 2018 at 05:22 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -360,6 +360,45 @@ INSERT INTO `student_assignment` (`ID`, `assignmentID`, `enroll_no`, `batchID`, 
 (18, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (19, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (20, 21, 'C17101PIT6108', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_quizattended`
+--
+
+CREATE TABLE `student_quizattended` (
+  `subjectID` int(11) NOT NULL,
+  `assignmentID` int(11) NOT NULL,
+  `questionID` int(11) NOT NULL,
+  `enroll_no` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_quizattended`
+--
+
+INSERT INTO `student_quizattended` (`subjectID`, `assignmentID`, `questionID`, `enroll_no`) VALUES
+(39, 21, 19, 'C17101PIT6089'),
+(39, 21, 5, 'C17101PIT6089'),
+(39, 21, 6, 'C17101PIT6089'),
+(39, 21, 8, 'C17101PIT6089'),
+(39, 21, 11, 'C17101PIT6089'),
+(39, 21, 14, 'C17101PIT6089'),
+(39, 21, 12, 'C17101PIT6089'),
+(39, 21, 7, 'C17101PIT6089'),
+(39, 21, 16, 'C17101PIT6089'),
+(39, 21, 1, 'C17101PIT6089'),
+(39, 21, 10, 'C17101PIT6089'),
+(39, 21, 18, 'C17101PIT6089'),
+(39, 21, 17, 'C17101PIT6089'),
+(39, 21, 20, 'C17101PIT6089'),
+(39, 21, 4, 'C17101PIT6089'),
+(39, 21, 9, 'C17101PIT6089'),
+(39, 21, 13, 'C17101PIT6089'),
+(39, 21, 2, 'C17101PIT6089'),
+(39, 21, 15, 'C17101PIT6089'),
+(39, 21, 3, 'C17101PIT6089');
 
 -- --------------------------------------------------------
 
