@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2018 at 05:22 PM
+-- Generation Time: Dec 08, 2018 at 09:37 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -142,7 +142,7 @@ CREATE TABLE `assignment` (
 --
 
 INSERT INTO `assignment` (`assignmentID`, `dateOfAssignment`, `targetDate`, `graceDate`, `course_code`, `subjectID`, `batchID`) VALUES
-(21, '2018-12-04 21:11:51', '2018-12-11', '2018-12-15', 'PIT', 39, 2);
+(21, '2018-12-04 21:11:51', '2018-12-11', '2018-12-08', 'PIT', 39, 2);
 
 -- --------------------------------------------------------
 
@@ -330,6 +330,31 @@ INSERT INTO `student` (`enroll_no`, `date_of_birth`, `name`, `sex`, `course_code
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `studentanswer`
+--
+
+CREATE TABLE `studentanswer` (
+  `studentAnswerID` int(11) NOT NULL,
+  `enroll_no` varchar(50) NOT NULL,
+  `assignmentID` int(11) NOT NULL,
+  `subjectID` int(11) NOT NULL,
+  `questionID` int(11) NOT NULL,
+  `answerID` int(11) NOT NULL,
+  `isCorrectAnswer` tinyint(1) NOT NULL,
+  `attemptDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `studentanswer`
+--
+
+INSERT INTO `studentanswer` (`studentAnswerID`, `enroll_no`, `assignmentID`, `subjectID`, `questionID`, `answerID`, `isCorrectAnswer`, `attemptDate`) VALUES
+(52, 'C17101PIT6089', 21, 39, 15, 58, 1, '2018-12-08 14:07:12'),
+(53, 'C17101PIT6089', 21, 39, 12, 47, 0, '2018-12-08 14:07:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_assignment`
 --
 
@@ -373,32 +398,6 @@ CREATE TABLE `student_quizattended` (
   `questionID` int(11) NOT NULL,
   `enroll_no` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `student_quizattended`
---
-
-INSERT INTO `student_quizattended` (`subjectID`, `assignmentID`, `questionID`, `enroll_no`) VALUES
-(39, 21, 19, 'C17101PIT6089'),
-(39, 21, 5, 'C17101PIT6089'),
-(39, 21, 6, 'C17101PIT6089'),
-(39, 21, 8, 'C17101PIT6089'),
-(39, 21, 11, 'C17101PIT6089'),
-(39, 21, 14, 'C17101PIT6089'),
-(39, 21, 12, 'C17101PIT6089'),
-(39, 21, 7, 'C17101PIT6089'),
-(39, 21, 16, 'C17101PIT6089'),
-(39, 21, 1, 'C17101PIT6089'),
-(39, 21, 10, 'C17101PIT6089'),
-(39, 21, 18, 'C17101PIT6089'),
-(39, 21, 17, 'C17101PIT6089'),
-(39, 21, 20, 'C17101PIT6089'),
-(39, 21, 4, 'C17101PIT6089'),
-(39, 21, 9, 'C17101PIT6089'),
-(39, 21, 13, 'C17101PIT6089'),
-(39, 21, 2, 'C17101PIT6089'),
-(39, 21, 15, 'C17101PIT6089'),
-(39, 21, 3, 'C17101PIT6089');
 
 -- --------------------------------------------------------
 
@@ -583,6 +582,12 @@ ALTER TABLE `question`
   ADD PRIMARY KEY (`questionID`);
 
 --
+-- Indexes for table `studentanswer`
+--
+ALTER TABLE `studentanswer`
+  ADD PRIMARY KEY (`studentAnswerID`);
+
+--
 -- Indexes for table `student_assignment`
 --
 ALTER TABLE `student_assignment`
@@ -657,6 +662,12 @@ ALTER TABLE `marks_details`
 --
 ALTER TABLE `question`
   MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `studentanswer`
+--
+ALTER TABLE `studentanswer`
+  MODIFY `studentAnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `student_assignment`
