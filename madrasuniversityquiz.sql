@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2018 at 09:37 AM
+-- Generation Time: Dec 09, 2018 at 09:18 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -142,7 +142,7 @@ CREATE TABLE `assignment` (
 --
 
 INSERT INTO `assignment` (`assignmentID`, `dateOfAssignment`, `targetDate`, `graceDate`, `course_code`, `subjectID`, `batchID`) VALUES
-(21, '2018-12-04 21:11:51', '2018-12-11', '2018-12-08', 'PIT', 39, 2);
+(21, '2018-12-04 21:11:51', '2018-12-11', '2018-12-11', 'PIT', 39, 2);
 
 -- --------------------------------------------------------
 
@@ -230,11 +230,16 @@ CREATE TABLE `marks_details` (
   `markDetailsID` int(11) NOT NULL,
   `assignmentID` int(11) NOT NULL,
   `enroll_no` varchar(50) NOT NULL,
-  `questionID` int(11) DEFAULT NULL,
   `subjectID` int(11) NOT NULL,
-  `obtainedMarks` int(11) NOT NULL,
-  `totalInternalMarks` float NOT NULL
+  `obtainedMarks` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `marks_details`
+--
+
+INSERT INTO `marks_details` (`markDetailsID`, `assignmentID`, `enroll_no`, `subjectID`, `obtainedMarks`) VALUES
+(6, 21, 'C17101PIT6089', 39, 10);
 
 -- --------------------------------------------------------
 
@@ -277,6 +282,29 @@ INSERT INTO `question` (`questionID`, `question`, `unitID`, `subjectID`, `course
 (18, 'Keyword which is used to access the method or member variables from the superclass', 5, 39, 'PIT', '2018-12-03 21:42:33', '2018-12-03 21:42:33'),
 (19, ' When sub class declares a method that has the same type arguments as a method declared by one of its superclass,it is termed as', 5, 39, 'PIT', '2018-12-03 21:43:17', '2018-12-03 21:43:17'),
 (20, 'Two or more methods with same name in the same class with different arguments is called as', 5, 39, 'PIT', '2018-12-03 21:44:39', '2018-12-03 21:44:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `semester`
+--
+
+CREATE TABLE `semester` (
+  `semesterID` int(11) NOT NULL,
+  `semesterName` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `semester`
+--
+
+INSERT INTO `semester` (`semesterID`, `semesterName`) VALUES
+(1, 'Semester 1'),
+(2, 'Semester 2'),
+(3, 'Semester 3'),
+(4, 'Semester 4'),
+(5, 'Semester 5'),
+(6, 'Semester 6');
 
 -- --------------------------------------------------------
 
@@ -349,8 +377,26 @@ CREATE TABLE `studentanswer` (
 --
 
 INSERT INTO `studentanswer` (`studentAnswerID`, `enroll_no`, `assignmentID`, `subjectID`, `questionID`, `answerID`, `isCorrectAnswer`, `attemptDate`) VALUES
-(52, 'C17101PIT6089', 21, 39, 15, 58, 1, '2018-12-08 14:07:12'),
-(53, 'C17101PIT6089', 21, 39, 12, 47, 0, '2018-12-08 14:07:21');
+(90, 'C17101PIT6089', 21, 39, 15, 58, 1, '2018-12-09 13:43:42'),
+(91, 'C17101PIT6089', 21, 39, 17, 66, 1, '2018-12-09 13:43:50'),
+(92, 'C17101PIT6089', 21, 39, 12, 46, 0, '2018-12-09 13:44:07'),
+(93, 'C17101PIT6089', 21, 39, 6, 23, 0, '2018-12-09 13:44:14'),
+(94, 'C17101PIT6089', 21, 39, 9, 34, 1, '2018-12-09 13:44:18'),
+(95, 'C17101PIT6089', 21, 39, 5, 17, 1, '2018-12-09 13:44:23'),
+(96, 'C17101PIT6089', 21, 39, 19, 74, 1, '2018-12-09 13:44:27'),
+(97, 'C17101PIT6089', 21, 39, 1, 2, 0, '2018-12-09 13:44:32'),
+(98, 'C17101PIT6089', 21, 39, 13, 50, 0, '2018-12-09 13:44:37'),
+(99, 'C17101PIT6089', 21, 39, 20, 77, 0, '2018-12-09 13:44:42'),
+(100, 'C17101PIT6089', 21, 39, 3, 9, 1, '2018-12-09 13:44:47'),
+(101, 'C17101PIT6089', 21, 39, 16, 62, 1, '2018-12-09 13:44:51'),
+(102, 'C17101PIT6089', 21, 39, 18, 69, 0, '2018-12-09 13:44:56'),
+(103, 'C17101PIT6089', 21, 39, 10, 39, 0, '2018-12-09 13:45:02'),
+(104, 'C17101PIT6089', 21, 39, 7, 26, 0, '2018-12-09 13:45:08'),
+(105, 'C17101PIT6089', 21, 39, 14, 53, 0, '2018-12-09 13:45:13'),
+(106, 'C17101PIT6089', 21, 39, 11, 43, 1, '2018-12-09 13:45:18'),
+(107, 'C17101PIT6089', 21, 39, 8, 31, 1, '2018-12-09 13:45:24'),
+(108, 'C17101PIT6089', 21, 39, 4, 14, 0, '2018-12-09 13:45:28'),
+(109, 'C17101PIT6089', 21, 39, 2, 5, 1, '2018-12-09 13:45:33');
 
 -- --------------------------------------------------------
 
@@ -366,7 +412,6 @@ CREATE TABLE `student_assignment` (
   `course_code` varchar(20) DEFAULT NULL,
   `subjectID` int(11) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `assignViewDate` datetime NOT NULL,
   `assignSubmitDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -374,17 +419,17 @@ CREATE TABLE `student_assignment` (
 -- Dumping data for table `student_assignment`
 --
 
-INSERT INTO `student_assignment` (`ID`, `assignmentID`, `enroll_no`, `batchID`, `course_code`, `subjectID`, `status`, `assignViewDate`, `assignSubmitDate`) VALUES
-(11, 21, 'C17101PIT6089', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 21, 'C17101PIT6095', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 21, 'C17101PIT6090', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, 21, 'C17101PIT6091', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, 21, 'C17101PIT6104', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, 21, 'C17101PIT6105', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 21, 'C17101PIT6106', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(20, 21, 'C17101PIT6108', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `student_assignment` (`ID`, `assignmentID`, `enroll_no`, `batchID`, `course_code`, `subjectID`, `status`, `assignSubmitDate`) VALUES
+(11, 21, 'C17101PIT6089', 2, 'PIT', 39, 'Submitted', '2018-12-09 09:15:35'),
+(12, 21, 'C17101PIT6095', 2, 'PIT', 39, 'Assigned', '2018-12-09 08:05:14'),
+(13, 21, 'C17101PIT6090', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(14, 21, 'C17101PIT6091', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(15, 21, 'C17101PIT6104', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(16, 21, 'C17101PIT6105', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(17, 21, 'C17101PIT6106', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(18, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(19, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(20, 21, 'C17101PIT6108', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -655,7 +700,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `marks_details`
 --
 ALTER TABLE `marks_details`
-  MODIFY `markDetailsID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `markDetailsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `question`
@@ -667,7 +712,7 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT for table `studentanswer`
 --
 ALTER TABLE `studentanswer`
-  MODIFY `studentAnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `studentAnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `student_assignment`
