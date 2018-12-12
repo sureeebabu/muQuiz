@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2018 at 09:18 AM
+-- Generation Time: Dec 12, 2018 at 04:20 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -43,7 +43,7 @@ INSERT INTO `answermaster` (`answerID`, `questionID`, `choice`, `isAnswer`) VALU
 (1, 1, 'Initialization', 0),
 (2, 1, 'Constructor function', 0),
 (3, 1, 'Initialization and Constructor function', 1),
-(4, 1, ' Setup() method', 0),
+(4, 1, 'Setup() method', 0),
 (5, 2, 'session.getAttribute(String name)', 1),
 (6, 2, 'session.alterAttribute(String name)', 0),
 (7, 2, 'session.updateAttribute(String name)', 0),
@@ -119,7 +119,19 @@ INSERT INTO `answermaster` (`answerID`, `questionID`, `choice`, `isAnswer`) VALU
 (77, 20, 'Method overriding', 0),
 (78, 20, 'Method overloading', 1),
 (79, 20, 'Static allocation', 0),
-(80, 20, 'Static typing', 0);
+(80, 20, 'Static typing', 0),
+(81, 21, ' new AuthType()', 0),
+(82, 21, 'response.getAuthType()', 0),
+(83, 21, 'request.getAuthType()', 1),
+(84, 21, 'None of the above.', 0),
+(85, 22, 'a', 1),
+(86, 22, 'b', 0),
+(87, 22, 'c', 0),
+(88, 22, 'd', 0),
+(89, 23, 'init(), service(), destroy()', 1),
+(90, 23, 'initialize(), service(), destroy()', 0),
+(91, 23, 'init(), execute(), destroy()', 0),
+(92, 23, 'init(), service(), delete()', 0);
 
 -- --------------------------------------------------------
 
@@ -142,7 +154,7 @@ CREATE TABLE `assignment` (
 --
 
 INSERT INTO `assignment` (`assignmentID`, `dateOfAssignment`, `targetDate`, `graceDate`, `course_code`, `subjectID`, `batchID`) VALUES
-(21, '2018-12-04 21:11:51', '2018-12-11', '2018-12-11', 'PIT', 39, 2);
+(21, '2018-12-04 21:11:51', '2018-12-11', '2018-12-13', 'PIT', 39, 2);
 
 -- --------------------------------------------------------
 
@@ -281,7 +293,9 @@ INSERT INTO `question` (`questionID`, `question`, `unitID`, `subjectID`, `course
 (17, 'Pick the term that relates to polymorphism', 5, 39, 'PIT', '2018-12-03 21:41:41', '2018-12-03 21:41:41'),
 (18, 'Keyword which is used to access the method or member variables from the superclass', 5, 39, 'PIT', '2018-12-03 21:42:33', '2018-12-03 21:42:33'),
 (19, ' When sub class declares a method that has the same type arguments as a method declared by one of its superclass,it is termed as', 5, 39, 'PIT', '2018-12-03 21:43:17', '2018-12-03 21:43:17'),
-(20, 'Two or more methods with same name in the same class with different arguments is called as', 5, 39, 'PIT', '2018-12-03 21:44:39', '2018-12-03 21:44:39');
+(20, 'Two or more methods with same name in the same class with different arguments is called as', 5, 39, 'PIT', '2018-12-03 21:44:39', '2018-12-03 21:44:39'),
+(21, 'Which of the following code retrieves the name of the authentication scheme?', 5, 39, 'PIT', '2018-12-12 20:19:13', '2018-12-12 20:19:13'),
+(23, ' Which of the following is the correct order of servlet life cycle phase methods?', 5, 39, 'PIT', '2018-12-12 20:25:45', '2018-12-12 20:25:45');
 
 -- --------------------------------------------------------
 
@@ -443,6 +457,32 @@ CREATE TABLE `student_quizattended` (
   `questionID` int(11) NOT NULL,
   `enroll_no` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_quizattended`
+--
+
+INSERT INTO `student_quizattended` (`subjectID`, `assignmentID`, `questionID`, `enroll_no`) VALUES
+(39, 21, 4, 'C17101PIT6095'),
+(39, 21, 6, 'C17101PIT6095'),
+(39, 21, 3, 'C17101PIT6095'),
+(39, 21, 18, 'C17101PIT6095'),
+(39, 21, 14, 'C17101PIT6095'),
+(39, 21, 2, 'C17101PIT6095'),
+(39, 21, 9, 'C17101PIT6095'),
+(39, 21, 23, 'C17101PIT6095'),
+(39, 21, 17, 'C17101PIT6095'),
+(39, 21, 7, 'C17101PIT6095'),
+(39, 21, 21, 'C17101PIT6095'),
+(39, 21, 12, 'C17101PIT6095'),
+(39, 21, 20, 'C17101PIT6095'),
+(39, 21, 5, 'C17101PIT6095'),
+(39, 21, 11, 'C17101PIT6095'),
+(39, 21, 15, 'C17101PIT6095'),
+(39, 21, 1, 'C17101PIT6095'),
+(39, 21, 13, 'C17101PIT6095'),
+(39, 21, 19, 'C17101PIT6095'),
+(39, 21, 16, 'C17101PIT6095');
 
 -- --------------------------------------------------------
 
@@ -670,7 +710,7 @@ ALTER TABLE `usermaster`
 -- AUTO_INCREMENT for table `answermaster`
 --
 ALTER TABLE `answermaster`
-  MODIFY `answerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `answerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `assignment`
@@ -706,7 +746,7 @@ ALTER TABLE `marks_details`
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `studentanswer`
