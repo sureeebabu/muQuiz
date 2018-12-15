@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2018 at 04:20 PM
+-- Generation Time: Dec 15, 2018 at 01:15 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `madrasuniversityquiz`
+-- Database: `madrasuniversity`
 --
 
 -- --------------------------------------------------------
@@ -154,7 +154,7 @@ CREATE TABLE `assignment` (
 --
 
 INSERT INTO `assignment` (`assignmentID`, `dateOfAssignment`, `targetDate`, `graceDate`, `course_code`, `subjectID`, `batchID`) VALUES
-(21, '2018-12-04 21:11:51', '2018-12-11', '2018-12-13', 'PIT', 39, 2);
+(61, '2018-12-15 17:27:17', '2018-12-19', '2018-12-22', 'PIT', 39, 2);
 
 -- --------------------------------------------------------
 
@@ -243,15 +243,25 @@ CREATE TABLE `marks_details` (
   `assignmentID` int(11) NOT NULL,
   `enroll_no` varchar(50) NOT NULL,
   `subjectID` int(11) NOT NULL,
-  `obtainedMarks` int(11) NOT NULL
+  `obtainedMarks` int(11) NOT NULL DEFAULT '0',
+  `updatedOn` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marks_details`
 --
 
-INSERT INTO `marks_details` (`markDetailsID`, `assignmentID`, `enroll_no`, `subjectID`, `obtainedMarks`) VALUES
-(6, 21, 'C17101PIT6089', 39, 10);
+INSERT INTO `marks_details` (`markDetailsID`, `assignmentID`, `enroll_no`, `subjectID`, `obtainedMarks`, `updatedOn`) VALUES
+(21, 61, 'C17101PIT6089', 39, 11, '2018-12-15 01:03:29'),
+(22, 61, 'C17101PIT6095', 39, 9, '2018-12-15 05:42:50'),
+(23, 61, 'C17101PIT6090', 39, 0, '0000-00-00 00:00:00'),
+(24, 61, 'C17101PIT6091', 39, 0, '0000-00-00 00:00:00'),
+(25, 61, 'C17101PIT6104', 39, 0, '0000-00-00 00:00:00'),
+(26, 61, 'C17101PIT6105', 39, 0, '0000-00-00 00:00:00'),
+(27, 61, 'C17101PIT6106', 39, 0, '0000-00-00 00:00:00'),
+(28, 61, 'C17101PIT6107', 39, 0, '0000-00-00 00:00:00'),
+(29, 61, 'C17101PIT6109', 39, 0, '0000-00-00 00:00:00'),
+(30, 61, 'C17101PIT6108', 39, 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -366,8 +376,10 @@ INSERT INTO `student` (`enroll_no`, `date_of_birth`, `name`, `sex`, `course_code
 ('C17101PIT6105', '10/10/1995', 'vignesh kumar', 'Male', 'PIT', 'E', '101', '101', 'Some', 'Some', 'some', 'some', 'Tamilnadu', '600001', 'India', 'Hindu', 'BC', NULL, NULL, NULL, NULL, NULL, 'vigneshkumar@gmail.com', NULL),
 ('C17101PIT6106', '10/09/1994st', 'pavan', 'Male', 'PIT', 'E', '101', '101', 'test', 'test', 'test', 'test', 'Tamilnadu', '600001', 'India', 'Hindu', 'BC', NULL, NULL, NULL, NULL, NULL, 'pavan@gmail.com', 'pavan'),
 ('C17101PIT6107', '10/10/1995', 'jisha', 'Male', 'PIT', 'E', '101', '101', 'Some', 'Some', 'some', 'some', 'Tamilnadu', '600001', 'India', 'Hindu', 'BC', NULL, NULL, NULL, NULL, NULL, 'jisha@gmail.com', NULL),
-('C17101PIT6107', '10/09/1994st', 'madan', 'Male', 'PIT', 'E', '101', '101', 'test', 'test', 'test', 'test', 'Tamilnadu', '600001', 'India', 'Hindu', 'BC', NULL, NULL, NULL, NULL, NULL, 'madan@gmail.com', 'pavan'),
-('C17101PIT6108', '10/10/1995', 'ponnuswami', 'Male', 'PIT', 'E', '101', '101', 'Some', 'Some', 'some', 'some', 'Tamilnadu', '600001', 'India', 'Hindu', 'BC', NULL, NULL, NULL, NULL, NULL, 'ponnuswami@gmail.com', NULL);
+('C17101PIT6109', '10/09/1994st', 'madan', 'Male', 'PIT', 'E', '101', '101', 'test', 'test', 'test', 'test', 'Tamilnadu', '600001', 'India', 'Hindu', 'BC', NULL, NULL, NULL, NULL, NULL, 'madan@gmail.com', 'pavan'),
+('C17101PIT6108', '10/10/1995', 'ponnuswami', 'Male', 'PIT', 'E', '101', '101', 'Some', 'Some', 'some', 'some', 'Tamilnadu', '600001', 'India', 'Hindu', 'BC', NULL, NULL, NULL, NULL, NULL, 'ponnuswami@gmail.com', NULL),
+('C18101PIT6089', '1996-09-09', 'C18suresh', 'Male', 'PIT', 'English', '101', '101', 'address1', 'address2', 'address3', 'address4', 'Tamil Nadu', '600001', 'Indian', 'Hindu', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '7092804642', 'sureshkumar20141@gmail.com ', 'suresh'),
+('A18101PIT6089', '1996-09-09', 'A18suresh', 'Male', 'PIT', 'English', '101', '101', 'address1', 'address2', 'address3', 'address4', 'Tamil Nadu', '600001', 'Indian', 'Hindu', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '7092804642', 'sureshkumar20141@gmail.com ', 'suresh');
 
 -- --------------------------------------------------------
 
@@ -391,26 +403,46 @@ CREATE TABLE `studentanswer` (
 --
 
 INSERT INTO `studentanswer` (`studentAnswerID`, `enroll_no`, `assignmentID`, `subjectID`, `questionID`, `answerID`, `isCorrectAnswer`, `attemptDate`) VALUES
-(90, 'C17101PIT6089', 21, 39, 15, 58, 1, '2018-12-09 13:43:42'),
-(91, 'C17101PIT6089', 21, 39, 17, 66, 1, '2018-12-09 13:43:50'),
-(92, 'C17101PIT6089', 21, 39, 12, 46, 0, '2018-12-09 13:44:07'),
-(93, 'C17101PIT6089', 21, 39, 6, 23, 0, '2018-12-09 13:44:14'),
-(94, 'C17101PIT6089', 21, 39, 9, 34, 1, '2018-12-09 13:44:18'),
-(95, 'C17101PIT6089', 21, 39, 5, 17, 1, '2018-12-09 13:44:23'),
-(96, 'C17101PIT6089', 21, 39, 19, 74, 1, '2018-12-09 13:44:27'),
-(97, 'C17101PIT6089', 21, 39, 1, 2, 0, '2018-12-09 13:44:32'),
-(98, 'C17101PIT6089', 21, 39, 13, 50, 0, '2018-12-09 13:44:37'),
-(99, 'C17101PIT6089', 21, 39, 20, 77, 0, '2018-12-09 13:44:42'),
-(100, 'C17101PIT6089', 21, 39, 3, 9, 1, '2018-12-09 13:44:47'),
-(101, 'C17101PIT6089', 21, 39, 16, 62, 1, '2018-12-09 13:44:51'),
-(102, 'C17101PIT6089', 21, 39, 18, 69, 0, '2018-12-09 13:44:56'),
-(103, 'C17101PIT6089', 21, 39, 10, 39, 0, '2018-12-09 13:45:02'),
-(104, 'C17101PIT6089', 21, 39, 7, 26, 0, '2018-12-09 13:45:08'),
-(105, 'C17101PIT6089', 21, 39, 14, 53, 0, '2018-12-09 13:45:13'),
-(106, 'C17101PIT6089', 21, 39, 11, 43, 1, '2018-12-09 13:45:18'),
-(107, 'C17101PIT6089', 21, 39, 8, 31, 1, '2018-12-09 13:45:24'),
-(108, 'C17101PIT6089', 21, 39, 4, 14, 0, '2018-12-09 13:45:28'),
-(109, 'C17101PIT6089', 21, 39, 2, 5, 1, '2018-12-09 13:45:33');
+(41, 'C17101PIT6089', 61, 39, 14, 54, 1, '2018-12-15 17:32:04'),
+(42, 'C17101PIT6089', 61, 39, 9, 34, 1, '2018-12-15 17:32:09'),
+(43, 'C17101PIT6089', 61, 39, 6, 22, 0, '2018-12-15 17:32:13'),
+(44, 'C17101PIT6089', 61, 39, 7, 25, 0, '2018-12-15 17:32:18'),
+(45, 'C17101PIT6089', 61, 39, 19, 74, 1, '2018-12-15 17:32:22'),
+(46, 'C17101PIT6089', 61, 39, 2, 5, 1, '2018-12-15 17:32:27'),
+(47, 'C17101PIT6089', 61, 39, 18, 69, 0, '2018-12-15 17:32:31'),
+(48, 'C17101PIT6089', 61, 39, 21, 81, 0, '2018-12-15 17:32:35'),
+(49, 'C17101PIT6089', 61, 39, 1, 2, 0, '2018-12-15 17:32:40'),
+(50, 'C17101PIT6089', 61, 39, 15, 58, 1, '2018-12-15 17:32:44'),
+(51, 'C17101PIT6089', 61, 39, 20, 77, 0, '2018-12-15 17:32:48'),
+(52, 'C17101PIT6089', 61, 39, 12, 45, 1, '2018-12-15 17:32:52'),
+(53, 'C17101PIT6089', 61, 39, 10, 37, 1, '2018-12-15 17:32:56'),
+(54, 'C17101PIT6089', 61, 39, 4, 14, 0, '2018-12-15 17:33:01'),
+(55, 'C17101PIT6089', 61, 39, 16, 62, 1, '2018-12-15 17:33:06'),
+(56, 'C17101PIT6089', 61, 39, 5, 17, 1, '2018-12-15 17:33:10'),
+(57, 'C17101PIT6089', 61, 39, 23, 89, 1, '2018-12-15 17:33:14'),
+(58, 'C17101PIT6089', 61, 39, 17, 66, 1, '2018-12-15 17:33:19'),
+(59, 'C17101PIT6089', 61, 39, 8, 30, 0, '2018-12-15 17:33:23'),
+(60, 'C17101PIT6089', 61, 39, 13, 50, 0, '2018-12-15 17:33:28'),
+(61, 'C17101PIT6095', 61, 39, 18, 69, 0, '2018-12-15 17:41:25'),
+(62, 'C17101PIT6095', 61, 39, 17, 66, 1, '2018-12-15 17:41:30'),
+(63, 'C17101PIT6095', 61, 39, 9, 34, 1, '2018-12-15 17:41:34'),
+(64, 'C17101PIT6095', 61, 39, 12, 46, 0, '2018-12-15 17:41:38'),
+(65, 'C17101PIT6095', 61, 39, 15, 58, 1, '2018-12-15 17:41:42'),
+(66, 'C17101PIT6095', 61, 39, 3, 9, 1, '2018-12-15 17:41:46'),
+(67, 'C17101PIT6095', 61, 39, 2, 5, 1, '2018-12-15 17:41:50'),
+(68, 'C17101PIT6095', 61, 39, 8, 29, 0, '2018-12-15 17:41:55'),
+(69, 'C17101PIT6095', 61, 39, 1, 2, 0, '2018-12-15 17:41:59'),
+(70, 'C17101PIT6095', 61, 39, 21, 81, 0, '2018-12-15 17:42:04'),
+(71, 'C17101PIT6095', 61, 39, 4, 14, 0, '2018-12-15 17:42:07'),
+(72, 'C17101PIT6095', 61, 39, 11, 42, 0, '2018-12-15 17:42:11'),
+(73, 'C17101PIT6095', 61, 39, 6, 22, 0, '2018-12-15 17:42:16'),
+(74, 'C17101PIT6095', 61, 39, 7, 26, 0, '2018-12-15 17:42:20'),
+(75, 'C17101PIT6095', 61, 39, 10, 37, 1, '2018-12-15 17:42:24'),
+(76, 'C17101PIT6095', 61, 39, 5, 17, 1, '2018-12-15 17:42:28'),
+(77, 'C17101PIT6095', 61, 39, 19, 73, 0, '2018-12-15 17:42:36'),
+(78, 'C17101PIT6095', 61, 39, 14, 53, 0, '2018-12-15 17:42:41'),
+(79, 'C17101PIT6095', 61, 39, 20, 78, 1, '2018-12-15 17:42:44'),
+(80, 'C17101PIT6095', 61, 39, 23, 89, 1, '2018-12-15 17:42:49');
 
 -- --------------------------------------------------------
 
@@ -434,16 +466,16 @@ CREATE TABLE `student_assignment` (
 --
 
 INSERT INTO `student_assignment` (`ID`, `assignmentID`, `enroll_no`, `batchID`, `course_code`, `subjectID`, `status`, `assignSubmitDate`) VALUES
-(11, 21, 'C17101PIT6089', 2, 'PIT', 39, 'Submitted', '2018-12-09 09:15:35'),
-(12, 21, 'C17101PIT6095', 2, 'PIT', 39, 'Assigned', '2018-12-09 08:05:14'),
-(13, 21, 'C17101PIT6090', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
-(14, 21, 'C17101PIT6091', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
-(15, 21, 'C17101PIT6104', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
-(16, 21, 'C17101PIT6105', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
-(17, 21, 'C17101PIT6106', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
-(18, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
-(19, 21, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
-(20, 21, 'C17101PIT6108', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00');
+(402, 61, 'C17101PIT6089', 2, 'PIT', 39, 'Submitted', '2018-12-15 01:03:29'),
+(403, 61, 'C17101PIT6095', 2, 'PIT', 39, 'Submitted', '2018-12-15 01:12:50'),
+(404, 61, 'C17101PIT6090', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(405, 61, 'C17101PIT6091', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(406, 61, 'C17101PIT6104', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(407, 61, 'C17101PIT6105', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(408, 61, 'C17101PIT6106', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(409, 61, 'C17101PIT6107', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(410, 61, 'C17101PIT6109', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00'),
+(411, 61, 'C17101PIT6108', 2, 'PIT', 39, 'Assigned', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -457,32 +489,6 @@ CREATE TABLE `student_quizattended` (
   `questionID` int(11) NOT NULL,
   `enroll_no` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `student_quizattended`
---
-
-INSERT INTO `student_quizattended` (`subjectID`, `assignmentID`, `questionID`, `enroll_no`) VALUES
-(39, 21, 4, 'C17101PIT6095'),
-(39, 21, 6, 'C17101PIT6095'),
-(39, 21, 3, 'C17101PIT6095'),
-(39, 21, 18, 'C17101PIT6095'),
-(39, 21, 14, 'C17101PIT6095'),
-(39, 21, 2, 'C17101PIT6095'),
-(39, 21, 9, 'C17101PIT6095'),
-(39, 21, 23, 'C17101PIT6095'),
-(39, 21, 17, 'C17101PIT6095'),
-(39, 21, 7, 'C17101PIT6095'),
-(39, 21, 21, 'C17101PIT6095'),
-(39, 21, 12, 'C17101PIT6095'),
-(39, 21, 20, 'C17101PIT6095'),
-(39, 21, 5, 'C17101PIT6095'),
-(39, 21, 11, 'C17101PIT6095'),
-(39, 21, 15, 'C17101PIT6095'),
-(39, 21, 1, 'C17101PIT6095'),
-(39, 21, 13, 'C17101PIT6095'),
-(39, 21, 19, 'C17101PIT6095'),
-(39, 21, 16, 'C17101PIT6095');
 
 -- --------------------------------------------------------
 
@@ -716,7 +722,7 @@ ALTER TABLE `answermaster`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `assignmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `batchmaster`
@@ -740,7 +746,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `marks_details`
 --
 ALTER TABLE `marks_details`
-  MODIFY `markDetailsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `markDetailsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `question`
@@ -752,13 +758,13 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT for table `studentanswer`
 --
 ALTER TABLE `studentanswer`
-  MODIFY `studentAnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `studentAnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `student_assignment`
 --
 ALTER TABLE `student_assignment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=412;
 
 --
 -- AUTO_INCREMENT for table `subjects`
